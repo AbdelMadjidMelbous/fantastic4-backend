@@ -1,10 +1,10 @@
 package com.example.repository;
 
-import com.example.models.Module;
+import com.example.models.Niveau;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 
-public interface ModuleRepository extends JpaRepository <Module, Long> {
+public interface NiveauRepository extends JpaRepository<Niveau, Long>  {
 }
