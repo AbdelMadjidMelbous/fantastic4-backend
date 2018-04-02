@@ -17,14 +17,19 @@ public class Question {
     private int poids;
     @Column(nullable=false)
     private String reponse;
+    @Column(name = "proposition1")
+    private String proposition1;
+    @Column(name = "proposition2")
+    private String proposition2;
+    @Column(name = "proposition3")
+    private String proposition3;
+
 
 
     @ManyToOne
     @JoinColumn(name="niveau_id")
     private Niveau niveau;
 
-    @ManyToMany(mappedBy = "questions")
-    private List<Proposition> propositions;
 
     public Question() {
     }
@@ -35,17 +40,21 @@ public class Question {
         this.reponse = reponse;
     }
 
-    public Question(String ennonce, int poids, String reponse, Niveau niveau, List<Proposition> propositions) {
+    public Question(String ennonce, int poids, String reponse, Niveau niveau, String proposition1,String proposition2,String proposition3) {
         this.ennonce = ennonce;
         this.poids = poids;
         this.reponse = reponse;
         this.niveau = niveau;
-        this.propositions = propositions;
+        this.proposition1=proposition1;
+        this.proposition2=proposition2;
+        this.proposition3=proposition3;
     }
 
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) { this.id = id; }
 
     public String getEnnonce() {
         return ennonce;
@@ -79,11 +88,27 @@ public class Question {
         this.niveau = niveau;
     }
 
-    public List<Proposition> getPropositions() {
-        return propositions;
+    public String getProposition1() {
+        return proposition1;
     }
 
-    public void setPropositions(List<Proposition> propositions) {
-        this.propositions = propositions;
+    public void setProposition1(String proposition1) {
+        this.proposition1 = proposition1;
+    }
+
+    public String getProposition2() {
+        return proposition2;
+    }
+
+    public void setProposition2(String proposition2) {
+        this.proposition2 = proposition2;
+    }
+
+    public String getProposition3() {
+        return proposition3;
+    }
+
+    public void setProposition3(String proposition3) {
+        this.proposition3 = proposition3;
     }
 }

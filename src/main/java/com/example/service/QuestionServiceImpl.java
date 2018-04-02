@@ -17,7 +17,7 @@ public class QuestionServiceImpl {
 
     public List<QuestionDTO> findAll() {
         return repository.findAll().stream()
-                .map(entity -> new QuestionDTO(entity.getId(), entity.getEnnonce(), entity.getPoids(),entity.getReponse(),entity.getNiveau(),entity.getPropositions()))
+                .map(entity -> new QuestionDTO(entity.getId(), entity.getEnnonce(), entity.getPoids(),entity.getReponse(),entity.getNiveau(),entity.getProposition1(),entity.getProposition2(),entity.getProposition3()))
                 .collect(Collectors.toList());
     }
 
@@ -28,9 +28,11 @@ public class QuestionServiceImpl {
         newQuestion.setPoids(question.getPoids());
         newQuestion.setReponse(question.getReponse());
         newQuestion.setNiveau(question.getNiveau());
-        newQuestion.setPropositions(question.getPropositions());
+        newQuestion.setProposition1(question.getProposition1());
+        newQuestion.setProposition2(question.getProposition2());
+        newQuestion.setProposition3(question.getProposition3());
         Question savedQuestion = repository.saveAndFlush(newQuestion);
-        return new QuestionDTO(savedQuestion.getId(), savedQuestion.getEnnonce(), savedQuestion.getPoids(),savedQuestion.getReponse(),savedQuestion.getNiveau(),savedQuestion.getPropositions());
+        return new QuestionDTO(savedQuestion.getId(), savedQuestion.getEnnonce(), savedQuestion.getPoids(),savedQuestion.getReponse(),savedQuestion.getNiveau(),savedQuestion.getProposition1(),savedQuestion.getProposition2(),savedQuestion.getProposition3());
     }
 
     @Transactional
@@ -40,8 +42,10 @@ public class QuestionServiceImpl {
         entity.setPoids(question.getPoids());
         entity.setReponse(question.getReponse());
         entity.setNiveau(question.getNiveau());
-        entity.setPropositions(question.getPropositions());
-        return new QuestionDTO(entity.getId(), entity.getEnnonce(), entity.getPoids(),entity.getReponse(),entity.getNiveau(),entity.getPropositions());
+        entity.setProposition1(question.getProposition1());
+        entity.setProposition2(question.getProposition2());
+        entity.setProposition3(question.getProposition3());
+        return new QuestionDTO(entity.getId(), entity.getEnnonce(), entity.getPoids(),entity.getReponse(),entity.getNiveau(),entity.getProposition1(),entity.getProposition2(),entity.getProposition3());
     }
 
     @Transactional
@@ -69,6 +73,9 @@ public class QuestionServiceImpl {
             questionDTO .setEnnonce(question.getEnnonce());
             questionDTO .setPoids(question.getPoids());
             questionDTO .setNiveau(question.getNiveau());
+            questionDTO.setProposition1(question.getProposition1());
+            questionDTO.setProposition2(question.getProposition2());
+            questionDTO.setProposition3(question.getProposition3());
             return questionDTO ;
         }
     }
